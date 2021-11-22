@@ -1,10 +1,2 @@
 <h1>All your To-Do's</h1>
-<div class="row">
-  <div class="col-sm-12 col-md-12, col-lg-6, col-xl-4, my-3" *ngFor="let list of (lists)">
-    <h2 class="title">{{ list.name }}</h2>
-    <div *ngFor="let item of (items)">
-      <app-item class="col-sm-12 col-md-12, col-lg-6, col-xl-4, my-3" *ngIf="item.listId == list.id" [item]="item"></app-item>
-    </div>
-  </div>
-
-</div>
+<app-item-list></app-item-list>

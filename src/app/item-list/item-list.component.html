@@ -1,1 +1,37 @@
-<p>item-list works!</p>
+<div class="row">
+  <div class="col-12 mb-2">
+    <button (click)="addItem()"class="btn btn-primary w-100">Add new To-Do</button>
+  </div>
+
+  <!-- Loop the Lists -->
+  <div class="col-12 mb-3" *ngFor="let list of (lists)">
+    <!-- Set the List Name -->
+    <h2 class="title">{{ list.name }}</h2>
+
+    <!-- Loop the Items -->
+    <div *ngFor="let item of (items)" class="">
+      <!-- Show the item if it's from the list -->
+      <app-item *ngIf="item.listId == list.id" [item]="item"></app-item>
+
+      <!-- Show the item Status Bar -->
+      <div *ngIf="item.listId == list.id" class="card text-center mb-5">
+        <div class="card-header">
+          <div *ngIf="item.statusId == 2; then thenBlock else elseBlock"></div>
+          <!-- Status == Done -->
+          <ng-template #thenBlock>
+            <button (click)="setDoing(item.id)" class="btn btn-success float-left">Set doing</button>
+          </ng-template>
+
+          <!-- Status == Doing -->
+          <ng-template #elseBlock>
+            <button (click)="setDone(item.id)"class="btn btn-danger float-left">Set done</button>
+          </ng-template>
+
+          <!-- The rest -->
+          <button (click)="editItem(item.id)"class="btn btn-primary">Edit</button>
+          <button (click)="deleteItem(item.id)"class="btn btn-danger float-right">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

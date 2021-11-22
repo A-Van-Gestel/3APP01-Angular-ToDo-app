@@ -11,6 +11,8 @@ import { ItemComponent } from './item/item.component';
 import { DateAndTimePipe } from './date-and-time.pipe';
 import { ItemListComponent } from './item-list/item-list.component';
 import { TitleCasePipe } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ItemFormComponent } from './item-form/item-form.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +22,14 @@ import { TitleCasePipe } from '@angular/common';
     ItemComponent,
     DateAndTimePipe,
     ItemListComponent,
+    ItemFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     TitleCasePipe

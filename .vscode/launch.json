@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+      {
+          "type": "chrome",
+          "request": "launch",
+          "name": "To-Do app",
+          "url": "http://localhost:5878/",
+          "webRoot": "${workspaceFolder}"
+      }
+  ]
+}

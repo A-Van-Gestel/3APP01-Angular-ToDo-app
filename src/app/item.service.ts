@@ -26,6 +26,13 @@ export class ItemService {
     return this.httpClient.delete<Item>('http://localhost:3000/items/' + id);
   }
 
+  postItem(item: Item): Observable<Item> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+
+    return this.httpClient.post<Item>("http://localhost:3000/items", item, {headers: headers});
+}
+
   putItem(id: number, item: Item): Observable<Item> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');

@@ -2,15 +2,14 @@
   <div class="card-header">
     {{statusName}}
     <div *ngIf="item.statusId == 2; then thenBlock else elseBlock"></div>
-    <ng-template #thenBlock><button (click)="setDoing(item.id)" class="border-0 bg-transparent float-left"><i class="fas fa-check"></i></button></ng-template>
-    <ng-template #elseBlock><button (click)="setDone(item.id)"class="border-0 bg-transparent float-left"><i class="fas fa-times"></i></button></ng-template>
+    <ng-template #thenBlock> | <i class="fas fa-check"></i></ng-template>
+    <ng-template #elseBlock> | <i class="fas fa-times"></i></ng-template>
   </div>
   <div class="card-body">
     <h5 class="card-title">{{item.title}}</h5>
     <p class="card-text">{{item.description}}</p>
-    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
   </div>
   <div class="card-footer text-muted">
-    {{item.date | dateAndTime : true}}
+    {{dateTime | dateAndTime : true}}
   </div>
 </div>
