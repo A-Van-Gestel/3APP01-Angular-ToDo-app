@@ -1,8 +1,10 @@
+import { TitleCasePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Item } from '../item';
 import { ItemService } from '../item.service';
 import { Status } from '../status';
+import { StatusEnum } from '../status-enum';
 import { StatusService } from '../status.service';
 
 @Component({
@@ -24,14 +26,14 @@ export class ItemComponent implements OnInit {
   statusName: string = "";
   private status: Subscription = new Subscription();
 
-  constructor(private statusService: StatusService, private itemService: ItemService) { }
+  constructor(private itemService: ItemService, private titleCasePipe:TitleCasePipe) { }
 
   ngOnInit(): void {
     this.getStatusName();
   }
 
   getStatusName() {
-    this.status = this.statusService.getStatusById(this.item.statusId).subscribe(result => this.statusName = result.name);
+    this.statusName = this.titleCasePipe.transform(StatusEnum[this.item.statusId]);
   }
 
 
