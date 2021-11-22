@@ -19,12 +19,12 @@
           <div *ngIf="item.statusId == 2; then thenBlock else elseBlock"></div>
           <!-- Status == Done -->
           <ng-template #thenBlock>
-            <button (click)="setDoing(item.id)" class="btn btn-success float-left">Set doing</button>
+            <button (click)="setDoing(item.id)" class="btn btn-danger float-left">Set doing</button>
           </ng-template>
 
           <!-- Status == Doing -->
           <ng-template #elseBlock>
-            <button (click)="setDone(item.id)"class="btn btn-danger float-left">Set done</button>
+            <button (click)="setDone(item.id)"class="btn btn-success float-left">Set done</button>
           </ng-template>
 
           <!-- The rest -->

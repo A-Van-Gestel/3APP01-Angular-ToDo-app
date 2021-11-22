@@ -17,10 +17,10 @@
     <!-- FormControl message: Title -->
     <div *ngIf="itemForm.controls.title.invalid && (itemForm.controls.title.dirty || itemForm.controls.title.touched)" class="invalid-feedback">
       <div *ngIf="itemForm.controls.title.errors?.required">
-        Name is required.
+        Title is required.
       </div>
       <div *ngIf="itemForm.controls.title.errors?.minlength">
-        Name must be at least 2 characters long.
+        Title must be at least 2 characters long.
       </div>
     </div>
   </div>
@@ -30,6 +30,13 @@
     <label for="description">Description</label>
     <textarea class="form-control" id="description" name="description" placeholder="Description" formControlName="description" rows="5"
     [ngClass]="{ 'is-invalid': itemForm.controls.description.invalid && (itemForm.controls.description.dirty || itemForm.controls.description.touched) }"></textarea>
+
+    <!-- FormControl message: Description -->
+    <div *ngIf="itemForm.controls.description.invalid && (itemForm.controls.description.dirty || itemForm.controls.description.touched)" class="invalid-feedback">
+      <div *ngIf="itemForm.controls.description.errors?.required">
+        Description is required.
+      </div>
+    </div>
   </div>
 
   <!-- Date -->
@@ -94,7 +101,7 @@
 
   <!-- Submit buttons -->
   <button type="submit" class="btn btn-primary" *ngIf="isAdd" [disabled]="!itemForm.valid || isSubmitted">Add new
-    item
+    To-Do
   </button>
   <button type="submit" class="btn btn-primary" *ngIf="isEdit" [disabled]="!itemForm.valid || isSubmitted">Save
   </button>

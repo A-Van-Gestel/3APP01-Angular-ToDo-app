@@ -35,7 +35,7 @@ export class ItemFormComponent implements OnInit, OnDestroy {
     id: new FormControl(''),
     listId: new FormControl('', [Validators.required]),
     title: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    description: new FormControl(''),
+    description: new FormControl('', [Validators.required]),
     date: new FormControl(this.dateTime.toISOString().substring(0, 16), [Validators.required]),
     statusId: new FormControl(StatusEnum.ONGOING, [Validators.required]), // default status is ongoing
     order: new FormControl('', [Validators.required]),
@@ -101,9 +101,9 @@ export class ItemFormComponent implements OnInit, OnDestroy {
 
   getTitle(): string {
     if (this.isAdd) {
-      return 'Add new item';
+      return 'Add new To-Do';
     } else {
-      return 'Edit item';
+      return 'Edit To-Do';
     }
   }
 

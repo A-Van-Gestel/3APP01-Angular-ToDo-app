@@ -1,5 +1,5 @@
 <div *ngIf="item" class="card text-center">
-  <div class="card-header">
+  <div class="card-header" [ngClass]="item.statusId == 1 ? 'text-danger' : 'text-success'">
     {{statusName}}
     <div *ngIf="item.statusId == 2; then thenBlock else elseBlock"></div>
     <ng-template #thenBlock> | <i class="fas fa-check"></i></ng-template>
