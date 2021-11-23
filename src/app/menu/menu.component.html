@@ -13,18 +13,16 @@
           <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
               <a class="nav-link" routerLink="/newitem">Add new To-Do</a>
           </li>
-          <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-              <a class="nav-link" routerLink="/newlist">Create new list</a>
-          </li>
-          <!-- <li class="nav-item dropdown">
+          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Admin
+              List
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" routerLink="/admin/category">Categories</a>
-              <a class="dropdown-item" routerLink="/admin/status">Statuses</a>
+              <a class="dropdown-item" routerLink="/list">Lists</a>
+              <!-- Empty routerLink so it looks clickable in the browser -->
+              <a class="dropdown-item" routerLink (click)="addList()">Create new List</a>
             </div>
-          </li> -->
+          </li>
       </ul>
   </div>
 </nav>

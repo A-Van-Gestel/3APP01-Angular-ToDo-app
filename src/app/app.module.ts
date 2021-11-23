@@ -14,6 +14,7 @@ import { TitleCasePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ItemFormComponent } from './item-form/item-form.component';
 import { ListListComponent } from './list-list/list-list.component';
+import { ListFormComponent } from './list-form/list-form.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ListListComponent } from './list-list/list-list.component';
     ItemListComponent,
     ItemFormComponent,
     ListListComponent,
+    ListFormComponent,
   ],
   imports: [
     BrowserModule,

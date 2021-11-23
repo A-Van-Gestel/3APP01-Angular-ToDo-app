@@ -1,0 +1,59 @@
+<div class="alert alert-danger" role="alert" *ngIf="isSubmitted && errorMessage">
+  {{errorMessage}}
+</div>
+<div class="alert alert-warning" role="warning">
+  <p>Form List: {{ listForm.status }}</p>
+</div>
+<form (ngSubmit)="onSubmit()" [formGroup]="listForm">
+  <!-- Name -->
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Name" formControlName="name" minlength="2" required [ngClass]="{ 'is-invalid': listForm.controls.name.invalid && (listForm.controls.name.dirty || listForm.controls.name.touched) }">
+
+    <!-- FormControl message: Name -->
+    <div *ngIf="listForm.controls.name.invalid && (listForm.controls.name.dirty || listForm.controls.name.touched)" class="invalid-feedback">
+      <div *ngIf="listForm.controls.name.errors?.required">
+        Name is required.
+      </div>
+      <div *ngIf="listForm.controls.name.errors?.minlength">
+        Name must be at least 2 characters long.
+      </div>
+    </div>
+  </div>
+
+  <!-- Color -->
+  <div class="form-group">
+    <label for="color">Color</label>
+    <input type="text" class="form-control" id="color" name="color" placeholder="#000000" formControlName="color" minlength="7" maxlength="7" required [ngClass]="{ 'is-invalid': listForm.controls.color.invalid && (listForm.controls.color.dirty || listForm.controls.color.touched) }">
+
+    <!-- FormControl message: Color -->
+    <div *ngIf="listForm.controls.color.invalid && (listForm.controls.color.dirty || listForm.controls.color.touched)" class="invalid-feedback">
+      <div *ngIf="listForm.controls.color.errors?.required">
+        Color is required.
+      </div>
+      <div *ngIf="listForm.controls.color.errors?.minlength || listForm.controls.color.errors?.maxlength">
+        Color must be 7 characters long.
+      </div>
+    </div>
+  </div>
+
+  <!-- Text Color -->
+  <div class="form-group">
+    <label for="textcolor">Text color</label>
+    <input type="text" class="form-control" id="textcolor" name="textcolor" placeholder="#FFFFFF" formControlName="textcolor" minlength="7" maxlength="7" required [ngClass]="{ 'is-invalid': listForm.controls.textcolor.invalid && (listForm.controls.textcolor.dirty || listForm.controls.textcolor.touched) }">
+
+    <!-- FormControl message: Text Color -->
+    <div *ngIf="listForm.controls.textcolor.invalid && (listForm.controls.textcolor.dirty || listForm.controls.textcolor.touched)" class="invalid-feedback">
+      <div *ngIf="listForm.controls.textcolor.errors?.required">
+        Text color is required.
+      </div>
+      <div *ngIf="listForm.controls.textcolor.errors?.minlength || listForm.controls.textcolor.errors?.maxlength">
+        Text color must be 7 characters long.
+      </div>
+    </div>
+  </div>
+
+
+  <button type="submit" class="btn btn-primary" *ngIf="isAdd" [disabled]="!listForm.valid || isSubmitted">Add</button>
+  <button type="submit" class="btn btn-primary" *ngIf="isEdit" [disabled]="!listForm.valid || isSubmitted">Save</button>
+</form>
