@@ -8,8 +8,8 @@
     <!-- Set the List Name -->
     <h2 class="title">{{ list.name }}</h2>
 
-    <!-- Loop the Items -->
-    <div *ngFor="let item of (items)" class="">
+    <!-- Start: Loop the Items -->
+    <div *ngFor="let item of (items)">
       <!-- Show the item if it's from the list -->
       <app-item *ngIf="item.listId == list.id" [item]="item"></app-item>
 
@@ -29,9 +29,34 @@
 
           <!-- The rest -->
           <button (click)="editItem(item.id)"class="btn btn-primary">Edit</button>
-          <button (click)="deleteItem(item.id)"class="btn btn-danger float-right">Remove</button>
+          <button type="button" class="btn btn-danger float-right" data-toggle="modal" attr.data-target="#Modal{{ item.id }}">Remove</button>
         </div>
       </div>
+
+      <!-- Remove Modal -->
+      <div class="modal fade" id="Modal{{ item.id }}" tabindex="-1" attr.aria-labelledby="Modal{{ item.id }}Label" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="Modal{{ item.id }}Label">Remove <span class="bold">{{ item.title }}</span></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to remove the todo <span class="bold">{{ item.title }}</span>?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button (click)="deleteItem(item.id)" class="btn btn-danger" data-dismiss="modal">Remove</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
+    <!-- End: Loop the items -->
+    <hr>
+
   </div>
 </div>

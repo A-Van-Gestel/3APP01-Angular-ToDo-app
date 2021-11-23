@@ -14,7 +14,8 @@ export class ListService {
   }
 
   getLists(): Observable<List[]> {
-    return timer(1, 3000).pipe(switchMap(() => this.httpClient.get<List[]>("http://localhost:3000/lists")));
+    // return timer(1, 3000).pipe(switchMap(() => this.httpClient.get<List[]>("http://localhost:3000/lists")));
+    return this.httpClient.get<List[]>("http://localhost:3000/lists");
   }
 
   getListById(id: number): Observable<List> {

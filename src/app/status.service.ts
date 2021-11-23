@@ -14,7 +14,8 @@ export class StatusService {
   }
 
   getStatuses(): Observable<Status[]> {
-    return timer(1, 3000).pipe(switchMap(() => this.httpClient.get<Status[]>("http://localhost:3000/statuses")));
+    // return timer(1, 3000).pipe(switchMap(() => this.httpClient.get<Status[]>("http://localhost:3000/statuses")));
+    return this.httpClient.get<Status[]>("http://localhost:3000/statuses");
   }
 
   getStatusById(id: number): Observable<Status> {
