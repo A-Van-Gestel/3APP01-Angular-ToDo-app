@@ -13,6 +13,7 @@ import { ItemListComponent } from './item-list/item-list.component';
 import { TitleCasePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ItemFormComponent } from './item-form/item-form.component';
+import { ListListComponent } from './list-list/list-list.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ItemFormComponent } from './item-form/item-form.component';
     DateAndTimePipe,
     ItemListComponent,
     ItemFormComponent,
+    ListListComponent,
   ],
   imports: [
     BrowserModule,

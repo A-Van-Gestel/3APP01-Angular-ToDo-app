@@ -28,6 +28,10 @@ export class ItemListComponent implements OnInit {
     this.items$ = this.itemService.getItems().subscribe(result => this.items = result);
   }
 
+  getItemsSortedByDate() {
+    this.items$ = this.itemService.getItemsSortedByDate().subscribe(result => this.items = result);
+  }
+
   getLists() {
     this.lists$ = this.listService.getLists().subscribe(result => this.lists = result);
   }
@@ -64,5 +68,21 @@ export class ItemListComponent implements OnInit {
   editItem(itemId: number) {
     //TODO
     this.router.navigate(['edititem/' + itemId]);
+  }
+
+  orderIncrease(itemId: number): void {
+    this.itemService.orderIncrease(itemId).subscribe(result => {
+      this.getItems();
+    }, error => {
+      //error
+    });
+  }
+
+  orderDecrease(itemId: number): void {
+    this.itemService.orderDecrease(itemId).subscribe(result => {
+      this.getItems();
+    }, error => {
+      //error
+    });
   }
 }
