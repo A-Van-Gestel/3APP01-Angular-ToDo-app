@@ -2,15 +2,17 @@ import { Injectable } from '@angular/core';
 import { List } from './list';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, timer } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { ItemService } from './item.service';
+import { Item } from './item';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListService {
+  private itemsToDelete: Item[] = [];
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private itemService: ItemService) {
   }
 
   getLists(): Observable<List[]> {
@@ -23,6 +25,14 @@ export class ListService {
   }
 
   deleteList(id: number): Observable<List> {
+    // First delete the Items in this list
+    this.itemService.getItemsFromList(id).subscribe(result => this.itemsToDelete = result);
+
+    this.itemsToDelete.forEach(item => {
+      this.itemService.deleteItem(item.id).subscribe()
+    });
+
+    // Then delete the actual list
     return this.httpClient.delete<List>('http://localhost:3000/lists/' + id);
   }
 
