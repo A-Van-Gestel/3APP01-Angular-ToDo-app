@@ -16,7 +16,7 @@ export class ItemService {
 
   getItems(): Observable<Item[]> {
     // return timer(1, 3000).pipe(switchMap(() => this.httpClient.get<Item[]>("http://localhost:3000/items")));
-    return this.httpClient.get<Item[]>("http://localhost:3000/items");
+    return this.httpClient.get<Item[]>("http://localhost:3000/items?_sort=order&_order=asc");
   }
 
   getItemById(id: number): Observable<Item> {

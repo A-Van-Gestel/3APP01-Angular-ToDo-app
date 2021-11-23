@@ -6,7 +6,12 @@
   <!-- Loop the Lists -->
   <div class="col-12 mb-3" *ngFor="let list of (lists)">
     <!-- Set the List Name -->
-    <h2 class="title">{{ list.name }}</h2>
+    <div class="headings">
+      <span class="hr ml-0" [ngStyle]="{'background': list.color}"></span>
+      <h2 class="title font-weight-bold" [ngStyle]="{'color': list.color}">{{ list.name }}</h2>
+      <span class="hr mr-0" [ngStyle]="{'background': list.color}"></span>
+    </div>
+
 
     <!-- Start: Loop the Items -->
     <div *ngFor="let item of (items)">
@@ -38,13 +43,13 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="Modal{{ item.id }}Label">Remove <span class="bold">{{ item.title }}</span></h5>
+              <h5 class="modal-title" id="Modal{{ item.id }}Label">Remove <span class="font-weight-bold">{{ item.title }}</span></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              Are you sure you want to remove the todo <span class="bold">{{ item.title }}</span>?
+              Are you sure you want to remove the todo <span class="font-weight-bold">{{ item.title }}</span>?
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

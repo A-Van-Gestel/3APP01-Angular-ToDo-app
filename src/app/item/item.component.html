@@ -4,6 +4,10 @@
     <div *ngIf="item.statusId == 2; then thenBlock else elseBlock"></div>
     <ng-template #thenBlock> | <i class="fas fa-check"></i></ng-template>
     <ng-template #elseBlock> | <i class="fas fa-times"></i></ng-template>
+    <div class="float-right">
+      <span class="text-muted">{{ item.order }}</span>
+    </div>
+
   </div>
   <div class="card-body">
     <h5 class="card-title">{{item.title}}</h5>
