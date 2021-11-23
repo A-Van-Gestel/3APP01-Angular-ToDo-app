@@ -1,6 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {List} from '../list';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {ListService} from '../list.service';
