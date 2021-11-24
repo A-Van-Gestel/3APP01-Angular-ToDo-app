@@ -2,13 +2,13 @@
   <div class="col-12 mb-2 d-flex">
     <button (click)="addItem()"class="btn btn-primary w-50 w-lg-25 mr-auto">Add new To-Do</button>
     <div class="btn-group w-50 w-lg-25">
-      <button (click)="getItemsSortedByDate()"class="btn btn-secondary w-50">Sort by date</button>
-      <button (click)="getItems()"class="btn btn-secondary w-50">Sort by order</button>
+      <button (click)="getItemsSortedByDate()"class="btn btn-secondary w-50">Sort by date <i class="fas fa-caret-down"></i></button>
+      <button (click)="getItems()"class="btn btn-secondary w-50">Sort by order <i class="fas fa-caret-down"></i></button>
     </div>
   </div>
 
-  <!-- Loop the Lists -->
-  <div class="col-12 mb-3" *ngFor="let list of (lists)">
+  <!-- Start: Loop the Lists -->
+  <div class="col-12 mb-3" *ngFor="let list of lists; last as isLast">
     <!-- Set the List Name -->
     <div class="headings">
       <span class="hr ml-0" [ngStyle]="{'background': list.color}"></span>
@@ -17,59 +17,74 @@
     </div>
 
 
-    <!-- Start: Loop the Items -->
-    <div *ngFor="let item of (items)">
-      <!-- Show the item if it's from the list -->
-      <app-item *ngIf="item.listId == list.id" [item]="item"></app-item>
+    <div *ngIf="getNumberOfItemsInList(list.id) > 0; then thenBlock else elseBlock"></div>
 
-      <!-- Show the item Status Bar -->
-      <div *ngIf="item.listId == list.id" class="card text-center mb-5">
-        <div class="card-header d-flex justify-content-between">
-          <div *ngIf="item.statusId == 2; then thenBlock else elseBlock"></div>
-          <!-- Status == Done -->
-          <ng-template #thenBlock>
-            <button (click)="setDoing(item.id)" class="btn btn-danger">Set doing</button>
-          </ng-template>
+      <!-- items in list -->
+      <ng-template #thenBlock>
+        <!-- Start: Loop the Items -->
+        <div *ngFor="let item of (items)">
+          <!-- Show the item if it's from the list -->
+          <app-item *ngIf="item.listId == list.id" [item]="item"></app-item>
 
-          <!-- Status == Doing -->
-          <ng-template #elseBlock>
-            <button (click)="setDone(item.id)"class="btn btn-success">Set done</button>
-          </ng-template>
+          <!-- Show the item Status Bar -->
+          <div *ngIf="item.listId == list.id" class="card text-center mb-5">
+            <div class="card-header d-flex justify-content-between">
+              <div *ngIf="item.statusId == 2; then thenBlock else elseBlock"></div>
+              <!-- Status == Done -->
+              <ng-template #thenBlock>
+                <button (click)="setDoing(item.id)" class="btn btn-danger">Set doing <i class="fas fa-times"></i></button>
+              </ng-template>
 
-          <!-- The rest -->
-          <button (click)="editItem(item.id)"class="btn btn-primary">Edit</button>
-          <div class="row-order btn-group-vertical">
-            <button (click)="orderIncrease(item.id)"class="btn btn-secondary btn-order"><i class="fas fa-caret-up"></i></button>
-            <button (click)="orderDecrease(item.id)"class="btn btn-secondary btn-order"><i class="fas fa-caret-down"></i></button>
-          </div>
-          <button type="button" class="btn btn-danger" data-toggle="modal" attr.data-target="#Modal{{ item.id }}">Remove</button>
-        </div>
-      </div>
+              <!-- Status == Doing -->
+              <ng-template #elseBlock>
+                <button (click)="setDone(item.id)"class="btn btn-success">Set done <i class="fas fa-check"></i></button>
+              </ng-template>
 
-      <!-- Remove Modal -->
-      <div class="modal fade" id="Modal{{ item.id }}" tabindex="-1" attr.aria-labelledby="Modal{{ item.id }}Label" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="Modal{{ item.id }}Label">Remove <span class="font-weight-bold">{{ item.title }}</span></h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              Are you sure you want to remove the todo <span class="font-weight-bold">{{ item.title }}</span>?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button (click)="deleteItem(item.id)" class="btn btn-danger" data-dismiss="modal">Remove</button>
+              <!-- The rest -->
+              <button (click)="editItem(item.id)"class="btn btn-primary">Edit <i class="fas fa-edit"></i></button>
+              <div class="row-order btn-group-vertical">
+                <button (click)="orderIncrease(item.id)"class="btn btn-secondary btn-order"><i class="fas fa-caret-up"></i></button>
+                <button (click)="orderDecrease(item.id)"class="btn btn-secondary btn-order"><i class="fas fa-caret-down"></i></button>
+              </div>
+              <button type="button" class="btn btn-danger" data-toggle="modal" attr.data-target="#Modal{{ item.id }}">Remove <i class="far fa-trash-alt"></i></button>
             </div>
           </div>
-        </div>
-      </div>
 
-    </div>
-    <!-- End: Loop the items -->
-    <hr>
+          <!-- Remove Modal -->
+          <div class="modal fade" id="Modal{{ item.id }}" tabindex="-1" attr.aria-labelledby="Modal{{ item.id }}Label" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="Modal{{ item.id }}Label">Remove <span class="font-weight-bold">{{ item.title }}</span></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Are you sure you want to remove the todo <span class="font-weight-bold">{{ item.title }}</span>?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button (click)="deleteItem(item.id)" class="btn btn-danger" data-dismiss="modal">Remove <i class="far fa-trash-alt"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End: Loop the items -->
+      </ng-template>
+
+
+      <!-- no items in list -->
+      <ng-template #elseBlock>
+        <div class="alert alert-info text-center" role="alert">
+          There are currently no items in this To-Do list.
+        </div>
+      </ng-template>
+
+
+    <hr *ngIf="!isLast">
 
   </div>
+  <!-- End: Loop the Lists -->
 </div>

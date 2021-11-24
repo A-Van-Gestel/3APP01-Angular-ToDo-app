@@ -17,6 +17,8 @@ export class ItemListComponent implements OnInit {
   items$: Subscription = new Subscription();
   lists$: Subscription = new Subscription();
 
+  private numberOfItemsInLists: Array<number> = []
+
   constructor(private itemService: ItemService, private listService: ListService, private router: Router) { }
 
   ngOnInit(): void {
@@ -33,7 +35,19 @@ export class ItemListComponent implements OnInit {
   }
 
   getLists() {
-    this.lists$ = this.listService.getLists().subscribe(result => this.lists = result);
+    this.lists$ = this.listService.getLists().subscribe(result => {
+      this.lists = result
+
+      result.forEach(list => {
+        this.itemService.getItemsFromList(list.id).subscribe(result => {
+          this.numberOfItemsInLists.push(result.length)
+        })
+      });
+    });
+  }
+
+  getNumberOfItemsInList(listId: number) {
+    return this.numberOfItemsInLists[listId -1]
   }
 
   setDone(itemId: number): void {
