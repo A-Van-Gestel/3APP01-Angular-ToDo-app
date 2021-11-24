@@ -37,22 +37,6 @@
     </div>
   </div>
 
-  <!-- Text Color -->
-  <div class="form-group">
-    <label for="textcolor">Text color</label>
-    <input type="text" class="form-control" id="textcolor" name="textcolor" placeholder="#FFFFFF" formControlName="textcolor" minlength="7" maxlength="7" required [ngClass]="{ 'is-invalid': listForm.controls.textcolor.invalid && (listForm.controls.textcolor.dirty || listForm.controls.textcolor.touched) }">
-
-    <!-- FormControl message: Text Color -->
-    <div *ngIf="listForm.controls.textcolor.invalid && (listForm.controls.textcolor.dirty || listForm.controls.textcolor.touched)" class="invalid-feedback">
-      <div *ngIf="listForm.controls.textcolor.errors?.required">
-        Text color is required.
-      </div>
-      <div *ngIf="listForm.controls.textcolor.errors?.minlength || listForm.controls.textcolor.errors?.maxlength">
-        Text color must be 7 characters long.
-      </div>
-    </div>
-  </div>
-
 
   <button type="submit" class="btn btn-primary" *ngIf="isAdd" [disabled]="!listForm.valid || isSubmitted">Add</button>
   <button type="submit" class="btn btn-primary" *ngIf="isEdit" [disabled]="!listForm.valid || isSubmitted">Save</button>

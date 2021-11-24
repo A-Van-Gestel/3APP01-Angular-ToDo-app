@@ -3,6 +3,7 @@ import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 import {List} from '../list';
 import {ListService} from '../list.service';
+import { ItemService } from '../item.service';
 
 @Component({
   selector: 'app-list-list',
@@ -16,7 +17,9 @@ export class ListListComponent implements OnInit, OnDestroy {
 
   errorMessage: string = '';
 
-  constructor(private listService: ListService, private router: Router) {
+  private numberOfItemsInLists: Array<number> = []
+
+  constructor(private listService: ListService, private itemService: ItemService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -49,6 +52,18 @@ export class ListListComponent implements OnInit, OnDestroy {
   }
 
   getLists() {
-    this.lists$ = this.listService.getLists().subscribe(result => this.lists = result);
+    this.lists$ = this.listService.getLists().subscribe(result => {
+      this.lists = result
+
+      result.forEach(list => {
+        this.itemService.getItemsFromList(list.id).subscribe(result => {
+          this.numberOfItemsInLists.push(result.length)
+        })
+      });
+    });
+  }
+
+  getNumberOfItemsInList(listId: number) {
+    return this.numberOfItemsInLists[listId -1]
   }
 }

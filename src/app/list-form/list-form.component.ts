@@ -26,8 +26,7 @@ export class ListFormComponent implements OnInit, OnDestroy {
   // reactive form
   listForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    color: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(7)]),
-    textcolor: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(7)]),
+    color: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(7)])
   });
 
   constructor(private router: Router, private listService: ListService) {
@@ -39,8 +38,7 @@ export class ListFormComponent implements OnInit, OnDestroy {
       this.list$ = this.listService.getListById(this.listId).subscribe(result => {
         this.listForm.setValue({
           name: result.name,
-          color: result.color,
-          textcolor: result.textcolor
+          color: result.color
         });
       });
     }
