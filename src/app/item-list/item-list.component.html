@@ -12,7 +12,8 @@
     <!-- Set the List Name -->
     <div class="headings">
       <span class="hr ml-0" [ngStyle]="{'background': list.color}"></span>
-      <h2 class="title font-weight-bold" [ngStyle]="{'color': list.color}">{{ list.name }}</h2>
+      <h2 class="title font-weight-bold" [ngStyle]="{'color': list.color}">
+        {{ list.name }} <span class="lead">({{ getNumberOfItemsDoneInList(list.id) }}/{{ getNumberOfItemsInList(list.id) }})</span></h2>
       <span class="hr mr-0" [ngStyle]="{'background': list.color}"></span>
     </div>
 

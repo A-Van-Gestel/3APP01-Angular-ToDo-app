@@ -18,6 +18,7 @@ export class ItemListComponent implements OnInit {
   lists$: Subscription = new Subscription();
 
   private numberOfItemsInLists: Array<number> = []
+  private numberOfItemsDoneInLists: Array<number> = []
 
   constructor(private itemService: ItemService, private listService: ListService, private router: Router) { }
 
@@ -42,12 +43,12 @@ export class ItemListComponent implements OnInit {
         this.itemService.getItemsFromList(list.id).subscribe(result => {
           this.numberOfItemsInLists.push(result.length)
         })
+
+        this.itemService.getItemsDoneFromList(list.id).subscribe(result => {
+          this.numberOfItemsDoneInLists.push(result.length)
+        })
       });
     });
-  }
-
-  getNumberOfItemsInList(listId: number) {
-    return this.numberOfItemsInLists[listId -1]
   }
 
   setDone(itemId: number): void {
@@ -98,5 +99,13 @@ export class ItemListComponent implements OnInit {
     }, error => {
       //error
     });
+  }
+
+  getNumberOfItemsInList(listId: number) {
+    return this.numberOfItemsInLists[listId -1]
+  }
+
+  getNumberOfItemsDoneInList(listId: number) {
+    return this.numberOfItemsDoneInLists[listId -1]
   }
 }
