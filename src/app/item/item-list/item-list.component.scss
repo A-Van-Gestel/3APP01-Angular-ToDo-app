@@ -1,41 +1,15 @@
-.card {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-
-  border-top: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
 .headings {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   padding: 2em 0;
-}
 
-.hr {
-  display: block;
-  flex: 1;
-  margin: 0 30px;
-  height: 3px;
-  background: #D4D4D4;
-}
-
-.btn-order {
-  height: 18px;
-  font-size: 13px;
-
-  i {
-    vertical-align: middle;
-    transform: translate(0, -60%)
+  .hr {
+    display: block;
+    flex: 1;
+    margin: 0 30px;
+    height: 3px;
+    background: #D4D4D4;
   }
+
 }
-
-.row-order {
-  max-height: 38px;
-}
-
-

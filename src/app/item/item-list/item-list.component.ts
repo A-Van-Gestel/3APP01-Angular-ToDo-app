@@ -51,55 +51,9 @@ export class ItemListComponent implements OnInit {
     });
   }
 
-  setDone(itemId: number): void {
-    this.itemService.setItemDone(itemId).subscribe(result => {
-      this.getItems();
-    }, error => {
-      //error
-    });
-  }
-
-  setDoing(itemId: number): void {
-    this.itemService.setItemDoing(itemId).subscribe(result => {
-      this.getItems();
-    }, error => {
-      //error
-    });
-  }
-
-  deleteItem(itemId: number): void {
-    this.itemService.deleteItem(itemId).subscribe(result => {
-      this.getItems();
-      this.getLists();
-    }, error => {
-      //error
-    });
-  }
-
   addItem() {
     //Navigate to form in add mode
     this.router.navigate(['item/new']);
-  }
-
-  editItem(itemId: number) {
-    //TODO
-    this.router.navigate(['item/edit/' + itemId]);
-  }
-
-  orderIncrease(itemId: number): void {
-    this.itemService.orderIncrease(itemId).subscribe(result => {
-      this.getItems();
-    }, error => {
-      //error
-    });
-  }
-
-  orderDecrease(itemId: number): void {
-    this.itemService.orderDecrease(itemId).subscribe(result => {
-      this.getItems();
-    }, error => {
-      //error
-    });
   }
 
   getNumberOfItemsInList(listId: number) {

@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { ItemListComponent } from './item-list/item-list.component';
 import { ItemComponent } from './item.component';
 import { SharedModule } from '../shared/shared.module';
+import { ItemStatusBarComponent } from './item-status-bar/item-status-bar.component';
 
 
 
 @NgModule({
   declarations: [
     ItemComponent,
-    ItemListComponent
+    ItemListComponent,
+    ItemStatusBarComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { SharedModule } from '../shared/shared.module';
   ],
   exports: [
     ItemComponent,
-    ItemListComponent
+    ItemListComponent,
+    ItemStatusBarComponent
   ],
 })
 export class ItemModule { }
