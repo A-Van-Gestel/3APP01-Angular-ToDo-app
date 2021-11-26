@@ -34,6 +34,9 @@
       <div *ngIf="listForm.controls.color.errors?.minlength || listForm.controls.color.errors?.maxlength">
         Color must be 7 characters long.
       </div>
+      <div *ngIf="listForm.controls.color.errors?.validColorHex">
+        Color needs to be a valid color HEX.
+      </div>
     </div>
   </div>
 

@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { validColorHexValidator } from 'src/app/shared/valid-color-hex-validator';
 import { ListService } from '../list.service';
 
 @Component({
@@ -26,7 +27,7 @@ export class ListFormComponent implements OnInit, OnDestroy {
   // reactive form
   listForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    color: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(7)])
+    color: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(7), validColorHexValidator()])
   });
 
   constructor(private router: Router, private listService: ListService) {
