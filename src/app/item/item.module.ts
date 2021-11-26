@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ItemListComponent } from './item-list/item-list.component';
 import { ItemComponent } from './item.component';
 import { SharedModule } from '../shared/shared.module';
-import { ItemStatusBarComponent } from './item-status-bar/item-status-bar.component';
+import { ItemStatusBarComponent } from './item-list/item-status-bar/item-status-bar.component';
 
 
 

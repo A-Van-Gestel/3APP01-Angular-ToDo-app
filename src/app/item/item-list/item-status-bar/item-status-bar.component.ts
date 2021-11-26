@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { List } from 'src/app/list/list';
-import { Item } from '../item';
-import { ItemListComponent } from '../item-list/item-list.component';
-import { ItemService } from '../item.service';
+import { Item } from '../../item';
+import { ItemListComponent } from '../item-list.component';
+import { ItemService } from '../../item.service';
 
 @Component({
   selector: 'app-item-status-bar',

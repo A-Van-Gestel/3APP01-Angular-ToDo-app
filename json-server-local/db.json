@@ -34,7 +34,7 @@
       "description": "Chapter test 2",
       "date": "2021-10-30T22:00:00.000Z",
       "statusId": 1,
-      "order": 1
+      "order": 2
     },
     {
       "id": 2,
@@ -52,7 +52,7 @@
       "description": "Deadline to upload project description and team",
       "date": "2021-10-24T22:00:00.000Z",
       "statusId": 2,
-      "order": 2
+      "order": 1
     },
     {
       "id": 4,
