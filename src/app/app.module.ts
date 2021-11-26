@@ -6,37 +6,26 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 
-import { HttpClientModule } from '@angular/common/http';
-import { ItemComponent } from './item/item.component';
-import { DateAndTimePipe } from './date-and-time.pipe';
-import { ItemListComponent } from './item-list/item-list.component';
-import { TitleCasePipe } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ItemFormComponent } from './item-form/item-form.component';
-import { ListListComponent } from './list-list/list-list.component';
-import { ListFormComponent } from './list-form/list-form.component';
+import { SharedModule } from './shared/shared.module';
+import { ItemModule } from './item/item.module';
+import { ListModule } from './list/list.module';
+import { StatusModule } from './status/status.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MenuComponent,
-    ItemComponent,
-    DateAndTimePipe,
-    ItemListComponent,
-    ItemFormComponent,
-    ListListComponent,
-    ListFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
+    SharedModule,
+    ItemModule,
+    ListModule,
+    StatusModule
   ],
   providers: [
-    TitleCasePipe
   ],
   bootstrap: [AppComponent]
 })

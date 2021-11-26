@@ -1,9 +1,10 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
-import {Router} from '@angular/router';
-import {List} from '../list';
-import {ListService} from '../list.service';
-import { ItemService } from '../item.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { List } from '../list';
+import { ListService } from '../list.service';
+import { ItemService } from '../../item/item.service';
+
 
 @Component({
   selector: 'app-list-list',

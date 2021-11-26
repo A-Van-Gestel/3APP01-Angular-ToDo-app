@@ -4,7 +4,7 @@ import { Item } from './item';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { StatusEnum } from './status-enum';
+import { StatusEnum } from '../status/status-enum';
 
 @Injectable({
   providedIn: 'root'

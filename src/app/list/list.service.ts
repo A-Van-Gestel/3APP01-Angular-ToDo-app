@@ -3,8 +3,8 @@ import { List } from './list';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ItemService } from './item.service';
-import { Item } from './item';
+import { Item } from '../item/item';
+import { ItemService } from '../item/item.service';
 
 @Injectable({
   providedIn: 'root'

@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Item } from '../item';
 import { ItemService } from '../item.service';
-import { List } from '../list';
-import { ListService } from '../list.service';
+import { List } from '../../list/list';
+import { ListService } from '../../list/list.service';
 
 @Component({
   selector: 'app-item-list',
@@ -70,6 +70,7 @@ export class ItemListComponent implements OnInit {
   deleteItem(itemId: number): void {
     this.itemService.deleteItem(itemId).subscribe(result => {
       this.getItems();
+      this.getLists();
     }, error => {
       //error
     });

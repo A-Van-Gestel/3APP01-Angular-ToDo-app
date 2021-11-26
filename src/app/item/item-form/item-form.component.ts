@@ -3,11 +3,11 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ItemService} from '../item.service';
 import {Subscription} from 'rxjs';
-import {ListService} from '../list.service';
-import {List} from '../list';
-import {StatusService} from '../status.service';
-import {Status} from '../status';
-import {StatusEnum} from '../status-enum';
+import {List} from '../../list/list';
+import {ListService} from '../../list/list.service';
+import {StatusService} from '../../status/status.service';
+import {Status} from '../../status/status';
+import {StatusEnum} from '../../status/status-enum';
 
 @Component({
   selector: 'app-item-form',
