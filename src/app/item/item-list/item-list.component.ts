@@ -78,12 +78,12 @@ export class ItemListComponent implements OnInit {
 
   addItem() {
     //Navigate to form in add mode
-    this.router.navigate(['newitem']);
+    this.router.navigate(['item/new']);
   }
 
   editItem(itemId: number) {
     //TODO
-    this.router.navigate(['edititem/' + itemId]);
+    this.router.navigate(['item/edit/' + itemId]);
   }
 
   orderIncrease(itemId: number): void {

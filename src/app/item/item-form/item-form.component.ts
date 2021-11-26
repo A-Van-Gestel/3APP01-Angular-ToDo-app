@@ -52,7 +52,7 @@ export class ItemFormComponent implements OnInit, OnDestroy {
               private itemService: ItemService,
               private listService: ListService,
               private statusService: StatusService) {
-    this.isAdd = this.router.url === '/newitem';
+    this.isAdd = this.router.url === '/new';
     this.isEdit = !this.isAdd;
   }
 
