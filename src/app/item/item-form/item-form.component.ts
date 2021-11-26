@@ -1,13 +1,13 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ItemService} from '../item.service';
-import {Subscription} from 'rxjs';
-import {List} from '../../list/list';
-import {ListService} from '../../list/list.service';
-import {StatusService} from '../../status/status.service';
-import {Status} from '../../status/status';
-import {StatusEnum} from '../../status/status-enum';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { List } from '../../list/list';
+import { ListService } from '../../list/list.service';
+import { Status } from '../../status/status';
+import { StatusEnum } from '../../status/status-enum';
+import { StatusService } from '../../status/status.service';
+import { ItemService } from '../item.service';
 
 @Component({
   selector: 'app-item-form',

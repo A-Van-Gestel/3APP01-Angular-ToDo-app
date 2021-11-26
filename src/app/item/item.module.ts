@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ItemListComponent } from './item-list/item-list.component';
-import { ItemComponent } from './item.component';
+import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
+import { ItemListComponent } from './item-list/item-list.component';
 import { ItemStatusBarComponent } from './item-list/item-status-bar/item-status-bar.component';
+import { ItemComponent } from './item.component';
 
 
 

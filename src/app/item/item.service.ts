@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Item } from './item';
-
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, timer } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { StatusEnum } from '../status/status-enum';
+import { Item } from './item';
+
 
 @Injectable({
   providedIn: 'root'

@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListListComponent } from './list-list/list-list.component';
-import { ListFormComponent } from './list-form/list-form.component';
+import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
+import { ListFormComponent } from './list-form/list-form.component';
+import { ListListComponent } from './list-list/list-list.component';
 import { ListRoutingModule } from './list-routing.module';
 
 

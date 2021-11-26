@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { Item } from '../item';
-import { ItemService } from '../item.service';
+import { Subscription } from 'rxjs';
 import { List } from '../../list/list';
 import { ListService } from '../../list/list.service';
+import { Item } from '../item';
+import { ItemService } from '../item.service';
 
 @Component({
   selector: 'app-item-list',
@@ -17,8 +17,8 @@ export class ItemListComponent implements OnInit {
   items$: Subscription = new Subscription();
   lists$: Subscription = new Subscription();
 
-  private numberOfItemsInLists: Array<number> = []
-  private numberOfItemsDoneInLists: Array<number> = []
+  private numberOfItemsInLists: Map<number, number> = new Map<number, number>()
+  private numberOfItemsDoneInLists: Map<number, number> = new Map<number, number>()
 
   constructor(private itemService: ItemService, private listService: ListService, private router: Router) { }
 
@@ -41,11 +41,11 @@ export class ItemListComponent implements OnInit {
 
       result.forEach(list => {
         this.itemService.getItemsFromList(list.id).subscribe(result => {
-          this.numberOfItemsInLists.push(result.length)
+          this.numberOfItemsInLists.set(list.id, result.length)
         })
 
         this.itemService.getItemsDoneFromList(list.id).subscribe(result => {
-          this.numberOfItemsDoneInLists.push(result.length)
+          this.numberOfItemsDoneInLists.set(list.id, result.length)
         })
       });
     });
@@ -57,10 +57,12 @@ export class ItemListComponent implements OnInit {
   }
 
   getNumberOfItemsInList(listId: number) {
-    return this.numberOfItemsInLists[listId -1]
+    // Nullish Coalescing added to prevent: error 'TS2532: Object is possibly 'undefined'
+    return this.numberOfItemsInLists.get(listId) ?? 0;
   }
 
   getNumberOfItemsDoneInList(listId: number) {
-    return this.numberOfItemsDoneInLists[listId -1]
+    // Nullish Coalescing added to prevent: error 'TS2532: Object is possibly 'undefined'
+    return this.numberOfItemsDoneInLists.get(listId) ?? 0;
   }
 }

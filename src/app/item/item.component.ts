@@ -1,9 +1,9 @@
 import { TitleCasePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { StatusEnum } from '../status/status-enum';
 import { Item } from './item';
 import { ItemService } from './item.service';
-import { StatusEnum } from '../status/status-enum';
 
 @Component({
   selector: 'app-item',

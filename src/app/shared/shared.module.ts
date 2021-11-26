@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule, TitleCasePipe } from '@angular/common';
-import { DateAndTimePipe } from './date-and-time.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DateAndTimePipe } from './date-and-time.pipe';
 
 
 
