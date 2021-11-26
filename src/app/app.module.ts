@@ -8,7 +8,6 @@ import { MenuComponent } from './menu/menu.component';
 
 import { SharedModule } from './shared/shared.module';
 import { ItemModule } from './item/item.module';
-import { ListModule } from './list/list.module';
 import { StatusModule } from './status/status.module';
 
 @NgModule({
@@ -22,7 +21,6 @@ import { StatusModule } from './status/status.module';
     AppRoutingModule,
     SharedModule,
     ItemModule,
-    ListModule,
     StatusModule
   ],
   providers: [
