@@ -1,4 +1,4 @@
-<div *ngIf="item" class="card text-center mb-5">
+<div *ngIf="item && list" class="card text-center mb-5">
   <div class="card-header d-flex justify-content-between">
     <div *ngIf="item.statusId == 2; then thenBlock else elseBlock"></div>
     <!-- Status == Done -->
@@ -23,7 +23,7 @@
 
 
 <!-- Remove Modal -->
-<div *ngIf="item" class="modal fade" id="Modal{{ item.id }}" tabindex="-1" attr.aria-labelledby="Modal{{ item.id }}Label" aria-hidden="true">
+<div *ngIf="item && list" class="modal fade" id="Modal{{ item.id }}" tabindex="-1" attr.aria-labelledby="Modal{{ item.id }}Label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

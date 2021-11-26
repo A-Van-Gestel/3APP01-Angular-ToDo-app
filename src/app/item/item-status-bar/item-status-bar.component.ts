@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { List } from 'src/app/list/list';
-import { ListService } from 'src/app/list/list.service';
 import { Item } from '../item';
 import { ItemListComponent } from '../item-list/item-list.component';
 import { ItemService } from '../item.service';

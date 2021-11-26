@@ -19,22 +19,20 @@
 
 
     <div *ngIf="getNumberOfItemsInList(list.id) > 0; then thenBlock else elseBlock"></div>
-
-      <!-- items in list -->
+      <!-- Then: items in list -->
       <ng-template #thenBlock>
         <!-- Start: Loop the Items -->
         <div *ngFor="let item of (items)">
-          <!-- Show the item if it's from the list -->
-          <app-item *ngIf="item.listId == list.id" [item]="item"></app-item>
-
-          <!-- Show the item Status Bar -->
-          <app-item-status-bar *ngIf="item.listId == list.id" [item]="item" [list]="list"></app-item-status-bar>
+          <div *ngIf="item.listId == list.id">
+            <!-- Show the item & status bar if it's from the list -->
+            <app-item  [item]="item"></app-item>
+            <app-item-status-bar [item]="item" [list]="list"></app-item-status-bar>
+          </div>
         </div>
         <!-- End: Loop the items -->
       </ng-template>
 
-
-      <!-- no items in list -->
+      <!-- Else: no items in list -->
       <ng-template #elseBlock>
         <div class="alert alert-info text-center" role="alert">
           There are currently no items in this To-Do list.
