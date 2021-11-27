@@ -13,7 +13,7 @@
     <h5 class="card-title">{{item.title}}</h5>
     <p class="card-text">{{item.description}}</p>
   </div>
-  <div class="card-footer text-muted">
+  <div *ngIf="item.date !=''"  class="card-footer text-muted">
     <!-- Done -->
     <span *ngIf="item.statusId == 2">{{dateTime | dateAndTime : true}}</span>
     <!-- Ongoing but lot's of time -->

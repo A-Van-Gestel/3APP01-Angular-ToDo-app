@@ -10,7 +10,7 @@
 
   <!-- Title -->
   <div class="form-group">
-    <label for="title">Title</label>
+    <label for="title">Title<sup class="text-danger mx-1">*</sup></label>
     <input type="text" class="form-control" id="title" name="title" placeholder="Title" formControlName="title" minlength="2" required
     [ngClass]="{ 'is-invalid': itemForm.controls.title.invalid && (itemForm.controls.title.dirty || itemForm.controls.title.touched) }">
 
@@ -27,7 +27,7 @@
 
   <!-- Description -->
   <div class="form-group">
-    <label for="description">Description</label>
+    <label for="description">Description<sup class="text-danger mx-1">*</sup></label>
     <textarea class="form-control" id="description" name="description" placeholder="Description" formControlName="description" rows="5"
     [ngClass]="{ 'is-invalid': itemForm.controls.description.invalid && (itemForm.controls.description.dirty || itemForm.controls.description.touched) }"></textarea>
 
@@ -42,20 +42,13 @@
   <!-- Date -->
   <div class="form-group">
     <label for="date">Date</label>
-    <input type="datetime-local" class="form-control" id="date" name="date" formControlName="date" required
+    <input type="datetime-local" class="form-control" id="date" name="date" formControlName="date"
     [ngClass]="{ 'is-invalid': itemForm.controls.date.invalid && (itemForm.controls.date.dirty || itemForm.controls.date.touched) }">
-
-    <!-- FormControl message: Date -->
-    <div *ngIf="itemForm.controls.date.invalid && (itemForm.controls.date.dirty || itemForm.controls.date.touched)" class="invalid-feedback">
-      <div *ngIf="itemForm.controls.date.errors?.required">
-        Date is required.
-      </div>
-    </div>
   </div>
 
   <!-- ListId -->
   <div class="form-group">
-    <label for="listId">List</label>
+    <label for="listId">List<sup class="text-danger mx-1">*</sup></label>
     <select class="custom-select" formControlName="listId" name="listId" required
     [ngClass]="{ 'is-invalid': itemForm.controls.listId.invalid && (itemForm.controls.listId.dirty || itemForm.controls.listId.touched) }">
       <option value="" disabled>Choose the list</option>
@@ -72,7 +65,7 @@
 
   <!-- Order -->
   <div class="form-group">
-    <label for="order">Order in the list</label>
+    <label for="order">Order in the list<sup class="text-danger mx-1">*</sup></label>
     <input type="number" class="form-control" id="order" name="order" placeholder=0
            formControlName="order" required
            [ngClass]="{ 'is-invalid': itemForm.controls.order.invalid && (itemForm.controls.order.dirty || itemForm.controls.order.touched) }">
@@ -87,7 +80,7 @@
 
   <!-- Status -->
   <div class="form-group">
-    <label for="status">Status</label>
+    <label for="status">Status<sup class="text-danger mx-1">*</sup></label>
     <select class="custom-select" formControlName="statusId" id="status" required>
       <option *ngFor="let status of statuses; let i = index" [ngValue]="status.id">{{status.name}}</option>
     </select>

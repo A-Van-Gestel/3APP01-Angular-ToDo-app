@@ -36,7 +36,7 @@ export class ItemFormComponent implements OnInit, OnDestroy {
     listId: new FormControl('', [Validators.required]),
     title: new FormControl('', [Validators.required, Validators.minLength(2)]),
     description: new FormControl('', [Validators.required]),
-    date: new FormControl(this.dateTime.toISOString().substring(0, 16), [Validators.required]),
+    date: new FormControl(''),
     statusId: new FormControl(StatusEnum.ONGOING, [Validators.required]), // default status is ongoing
     order: new FormControl('', [Validators.required]),
   });
@@ -63,18 +63,32 @@ export class ItemFormComponent implements OnInit, OnDestroy {
       if (id != null) {
         this.itemId = +id;
         this.itemService.getItemById(+id).subscribe(result => {
-          // Get current date
-          this.date = new Date(result.date);
-
-          this.itemForm.patchValue({
-            id: result.id,
-            listId: result.listId,
-            title: result.title,
-            description: result.description,
-            date: this.date.toISOString().substring(0, 16),
-            statusId: result.statusId,
-            order: result.order,
-          });
+          // Item has date, do date stuff
+          if(result.date != ""){
+            // Get current date
+            this.dateTime = new Date(result.date);
+            this.itemForm.patchValue({
+              id: result.id,
+              listId: result.listId,
+              title: result.title,
+              description: result.description,
+              date: this.dateTime.toISOString().substring(0, 16),
+              statusId: result.statusId,
+              order: result.order,
+            });
+          }
+          // Item has no date, keep empty date
+          else {
+            this.itemForm.patchValue({
+              id: result.id,
+              listId: result.listId,
+              title: result.title,
+              description: result.description,
+              date: result.date,
+              statusId: result.statusId,
+              order: result.order,
+            });
+          }
         });
       }
     }
@@ -88,8 +102,6 @@ export class ItemFormComponent implements OnInit, OnDestroy {
     this.statuses$ = this.statusService.getStatuses().subscribe(result => {
       this.statuses = result;
     });
-
-    // Track Changes for validation messages in view
   }
 
   ngOnDestroy(): void {
@@ -113,10 +125,13 @@ export class ItemFormComponent implements OnInit, OnDestroy {
   }
 
   submitData(): void {
-    // Fixing the dateTime string to correctly convert back to the correct Date()
     let formValue = this.itemForm.value;
-    let dateTime = formValue.date + ":00.000Z"; // if not added the time is an hour short
-    formValue.date = dateTime;
+    // Item has date, do date stuff
+    if(formValue.date != "") {
+      // Fixing the dateTime string to correctly convert back to the correct Date()
+      let dateTime = formValue.date + ":00.000Z"; // if not added the time is an hour short
+      formValue.date = dateTime;
+    }
 
     if (this.isAdd) {
       //Add

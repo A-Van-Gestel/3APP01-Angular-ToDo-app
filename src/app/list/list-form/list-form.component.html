@@ -10,7 +10,7 @@
 
   <!-- Name -->
   <div class="form-group">
-    <label for="name">Name</label>
+    <label for="name">Name<sup class="text-danger mx-1">*</sup></label>
     <input type="text" class="form-control" id="name" name="name" placeholder="Name" formControlName="name" minlength="2" required [ngClass]="{ 'is-invalid': listForm.controls.name.invalid && (listForm.controls.name.dirty || listForm.controls.name.touched) }">
 
     <!-- FormControl message: Name -->
@@ -26,7 +26,7 @@
 
   <!-- Color -->
   <div class="form-group">
-    <label for="color">Color</label>
+    <label for="color">Color<sup class="text-danger mx-1">*</sup></label>
     <input type="text" class="form-control" id="color" name="color" placeholder="#000000" formControlName="color" minlength="7" maxlength="7" required [ngClass]="{ 'is-invalid': listForm.controls.color.invalid && (listForm.controls.color.dirty || listForm.controls.color.touched) }">
 
     <!-- FormControl message: Color -->
