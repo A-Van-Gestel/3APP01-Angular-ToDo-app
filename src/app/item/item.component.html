@@ -19,8 +19,8 @@
     <!-- Ongoing but lot's of time -->
     <span *ngIf="getDaysTillDeadline_raw() > 1 && item.statusId == 1">{{dateTime | dateAndTime : true}}<br>{{getDaysTillDeadline()}} days, {{getHoursTillDeadline()}} hours, {{getMinutesTillDeadline()}} minutes till deadline.</span>
     <!-- Ongoing but less then one day -->
-    <span *ngIf="0 < getDaysTillDeadline_raw() && getDaysTillDeadline_raw() <= 1 && item.statusId == 1" class="text-warning">{{dateTime | dateAndTime : true}}<br>{{getHoursTillDeadline()}} hours, {{getMinutesTillDeadline()}} minutes till deadline.</span>
+    <span *ngIf="0 < getDaysTillDeadline_raw() && getDaysTillDeadline_raw() <= 1 && item.statusId == 1" class="text-warning">{{dateTime | dateAndTime : true}}<br><span *ngIf="getDaysTillDeadline() != 0">{{getDaysTillDeadline()}} days,</span> {{getHoursTillDeadline()}} hours, {{getMinutesTillDeadline()}} minutes till deadline.</span>
     <!-- Ongoing and to late -->
-    <span *ngIf="getDaysTillDeadline_raw() < 0 && item.statusId == 1" class="text-danger">{{dateTime | dateAndTime : true}}<br>{{getDaysTillDeadline()}} days, {{getHoursTillDeadline()}} hours, {{getMinutesTillDeadline()}} minutes to late.</span>
+    <span *ngIf="getDaysTillDeadline_raw() < 0 && item.statusId == 1" class="text-danger">{{dateTime | dateAndTime : true}}<br><span *ngIf="getDaysTillDeadline() != 0">{{getDaysTillDeadline()}} days,</span> {{getHoursTillDeadline()}} hours, {{getMinutesTillDeadline()}} minutes to late.</span>
   </div>
 </div>
