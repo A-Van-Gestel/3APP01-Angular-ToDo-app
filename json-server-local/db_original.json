@@ -3,20 +3,22 @@
     {
       "name": "School",
       "color": "#afdeee",
-      "textcolor": "#000000",
       "id": 1
     },
     {
       "id": 2,
       "name": "Home",
-      "color": "#eab48d",
-      "textcolor": "#000000"
+      "color": "#eab48d"
     },
     {
       "name": "Test",
       "color": "#000000",
-      "textcolor": "#FFFFFF",
       "id": 3
+    },
+    {
+      "name": "Test Empty List",
+      "color": "#ddaaaa",
+      "id": 4
     }
   ],
   "items": [
@@ -51,7 +53,7 @@
       "id": 4,
       "listId": 3,
       "title": "Test",
-      "description": "te<st",
+      "description": "test",
       "date": "2021-11-23T20:25:00.000Z",
       "statusId": 2,
       "order": 1

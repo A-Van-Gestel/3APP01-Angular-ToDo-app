@@ -11,12 +11,16 @@
       <button (click)="setDone(item.id)"class="btn btn-success">Set done <i class="fas fa-check"></i></button>
     </ng-template>
 
-    <!-- The rest -->
+    <!-- Edit -->
     <button (click)="editItem(item.id)"class="btn btn-primary">Edit <i class="fas fa-edit"></i></button>
+
+    <!-- Order -->
     <div class="row-order btn-group-vertical">
-      <button (click)="orderIncrease(item.id)"class="btn btn-secondary btn-order"><i class="fas fa-caret-up"></i></button>
-      <button (click)="orderDecrease(item.id)"class="btn btn-secondary btn-order"><i class="fas fa-caret-down"></i></button>
+      <button (click)="orderDecrease(item.id)"class="btn btn-secondary btn-order" title="Move up"><i class="fas fa-caret-up"></i></button>
+      <button (click)="orderIncrease(item.id)"class="btn btn-secondary btn-order" title="Move down"><i class="fas fa-caret-down"></i></button>
     </div>
+
+    <!-- Remove -->
     <button type="button" class="btn btn-danger" data-toggle="modal" attr.data-target="#Modal{{ item.id }}">Remove <i class="far fa-trash-alt"></i></button>
   </div>
 </div>

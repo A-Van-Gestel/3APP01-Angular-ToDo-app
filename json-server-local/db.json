@@ -19,11 +19,6 @@
       "name": "Test Empty List",
       "color": "#ddaaaa",
       "id": 4
-    },
-    {
-      "name": "Axel Van Gestel",
-      "color": "#000222",
-      "id": 5
     }
   ],
   "items": [
@@ -34,7 +29,7 @@
       "description": "Chapter test 2",
       "date": "2021-10-30T22:00:00.000Z",
       "statusId": 1,
-      "order": 2
+      "order": 1
     },
     {
       "id": 2,
@@ -52,13 +47,13 @@
       "description": "Deadline to upload project description and team",
       "date": "2021-10-24T22:00:00.000Z",
       "statusId": 2,
-      "order": 1
+      "order": 2
     },
     {
       "id": 4,
       "listId": 3,
       "title": "Test",
-      "description": "te<st",
+      "description": "test",
       "date": "2021-11-23T20:25:00.000Z",
       "statusId": 2,
       "order": 1

@@ -1,10 +1,13 @@
+<h1>{{getTitle()}}</h1>
+
+<!-- Alerts -->
 <div class="alert alert-danger" role="alert" *ngIf="isSubmitted && errorMessage">
   {{errorMessage}}
 </div>
-<div class="alert alert-warning" role="warning">
-  <p>Form List: {{ listForm.status }}</p>
-</div>
+
+<!-- Form -->
 <form (ngSubmit)="onSubmit()" [formGroup]="listForm">
+
   <!-- Name -->
   <div class="form-group">
     <label for="name">Name</label>
@@ -41,6 +44,12 @@
   </div>
 
 
+  <!-- Invalid Form alert -->
+  <div *ngIf="listForm.status == 'INVALID'" class="alert alert-warning" role="warning">
+    <p>There are some errors in the form, please check your input.</p>
+  </div>
+
+  <!-- Submit buttons -->
   <button type="submit" class="btn btn-primary" *ngIf="isAdd" [disabled]="!listForm.valid || isSubmitted">Add</button>
   <button type="submit" class="btn btn-primary" *ngIf="isEdit" [disabled]="!listForm.valid || isSubmitted">Save</button>
 </form>

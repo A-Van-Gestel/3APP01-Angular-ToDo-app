@@ -3,7 +3,7 @@
 </div>
 
 
-<button type="button" class="btn btn-success addBtn" (click)="add()"><i class="fas fa-plus"></i> Add new list</button>
+<button type="button" class="btn btn-primary mb-4" (click)="add()"><i class="fas fa-plus"></i> Add new list</button>
 <table class="table" *ngIf="lists && lists.length > 0">
   <thead>
   <tr>
@@ -21,8 +21,8 @@
     <td>{{ list.color }}</td>
     <td class="title font-weight-bold" [ngStyle]="{'color': list.color}">{{list.name}}</td>
     <td>
-      <button type="button" class="btn btn-success" (click)="edit(list.id)"><i class="fas fa-edit"></i></button>
-      <button type="button" class="btn btn-danger" data-toggle="modal" attr.data-target="#Modal{{ list.id }}"><i class="far fa-trash-alt"></i></button>
+      <button type="button" class="btn btn-primary" (click)="edit(list.id)" title="Edit list: {{ list.name }}"><i class="fas fa-edit"></i></button>
+      <button type="button" class="btn btn-danger" data-toggle="modal" attr.data-target="#Modal{{ list.id }}" title="Remove list: {{ list.name }}"><i class="far fa-trash-alt"></i></button>
     </td>
   </tr>
   </tbody>
@@ -44,7 +44,11 @@
           </div>
           <div class="modal-body">
             Are you sure you want to remove the list <span class="font-weight-bold">{{ list.name }}</span>? <br>
-            This will also remove <span class="font-weight-bold">{{ getNumberOfItemsInList(list.id) }}</span> To-Do's currently in this list.
+            This will also remove
+            <span *ngIf="getNumberOfItemsInList(list.id) > 1"><span class="font-weight-bold text-danger">{{ getNumberOfItemsInList(list.id) }}</span> To-Do's</span>
+            <span *ngIf="getNumberOfItemsInList(list.id) == 1"><span class="font-weight-bold text-danger">{{ getNumberOfItemsInList(list.id) }}</span> To-Do</span>
+            <span *ngIf="getNumberOfItemsInList(list.id) == 0"><span class="font-weight-bold">{{ getNumberOfItemsInList(list.id) }}</span> To-Do's</span>
+             currently in this list.
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

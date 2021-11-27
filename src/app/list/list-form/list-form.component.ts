@@ -54,6 +54,14 @@ export class ListFormComponent implements OnInit, OnDestroy {
     this.putList$.unsubscribe();
   }
 
+  getTitle(): string {
+    if (this.isAdd) {
+      return 'Add new List';
+    } else {
+      return 'Edit List';
+    }
+  }
+
   onSubmit(): void {
     this.isSubmitted = true;
     if (this.isAdd) {
