@@ -17,9 +17,6 @@ export class ItemListComponent implements OnInit {
   items$: Subscription = new Subscription();
   lists$: Subscription = new Subscription();
 
-  private numberOfItemsInLists: Map<number, number> = new Map<number, number>()
-  private numberOfItemsDoneInLists: Map<number, number> = new Map<number, number>()
-
   constructor(private itemService: ItemService, private listService: ListService, private router: Router) { }
 
   ngOnInit(): void {
@@ -38,16 +35,6 @@ export class ItemListComponent implements OnInit {
   getLists() {
     this.lists$ = this.listService.getLists().subscribe(result => {
       this.lists = result
-
-      result.forEach(list => {
-        this.itemService.getItemsFromList(list.id).subscribe(result => {
-          this.numberOfItemsInLists.set(list.id, result.length)
-        })
-
-        this.itemService.getItemsDoneFromList(list.id).subscribe(result => {
-          this.numberOfItemsDoneInLists.set(list.id, result.length)
-        })
-      });
     });
   }
 
@@ -57,12 +44,22 @@ export class ItemListComponent implements OnInit {
   }
 
   getNumberOfItemsInList(listId: number) {
-    // Nullish Coalescing added to prevent: error 'TS2532: Object is possibly 'undefined'
-    return this.numberOfItemsInLists.get(listId) ?? 0;
+    let numberOfItemsInLists = 0
+    this.items.forEach(item => {
+      if (item.listId == listId) {
+        numberOfItemsInLists += 1;
+      }
+    })
+    return numberOfItemsInLists;
   }
 
   getNumberOfItemsDoneInList(listId: number) {
-    // Nullish Coalescing added to prevent: error 'TS2532: Object is possibly 'undefined'
-    return this.numberOfItemsDoneInLists.get(listId) ?? 0;
+    let numberOfItemsDoneInLists = 0
+    this.items.forEach(item => {
+      if (item.listId == listId && item.statusId == 2) {
+        numberOfItemsDoneInLists += 1;
+      }
+    })
+    return numberOfItemsDoneInLists;
   }
 }
